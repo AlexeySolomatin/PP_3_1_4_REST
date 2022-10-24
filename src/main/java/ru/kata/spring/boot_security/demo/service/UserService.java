@@ -9,6 +9,9 @@ public interface UserService extends UserDetailsService {
     User getUserByEmail(String email);
     //void saveOrUpdate(User user);
     void delete(int id);
+
+    User getUser(int id);
+
     void save(User user);
     void update(User updateUser);
 }

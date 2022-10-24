@@ -7,8 +7,10 @@ import java.util.List;
 public interface UserDAO {
     List<User> getAllUsers();
     User getUserByEmail(String email);
-    //void saveOrUpdate(User user);
+
     void save(User user);
     void update(User updateUser);
     void delete(int id);
+
+    User getUser(int id);
 }

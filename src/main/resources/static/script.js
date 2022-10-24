@@ -16,7 +16,7 @@ const renderUser = (user) => {
         <td><p>${user.firstName}</p></td>
         <td>${user.lastName}</td>
         <td>${user.age}</td>
-        <td>${user.email}</td>
+        <td>${user.email}</td>        
         <td>${user.role}</td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" id="edit" 
                 data-target="#modalEdit"> Edit</button></td>
@@ -34,7 +34,7 @@ const renderUsers = (users) => {
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
             <td>${user.age}</td>
-            <td>${user.email}</td>
+            <td>${user.email}</td>                      
             <td>${user.role}</td>
             <td><button type="button" class="btn btn-info" data-toggle="modal" id="edit" 
                     data-target="#modalEdit"> Edit</button></td>
@@ -78,7 +78,7 @@ addUserForm.addEventListener('submit', (e) => {
             lastName: newLastName.value,
             age: newAge.value,
             email: newEmail.value,
-            password: newAge.value,
+            password: newPassword.value,
             role: $('#newUserRole').val().join(' ')
         })
     })
@@ -112,6 +112,8 @@ table.addEventListener('click', (e) => {
         editAge.value = children[3].textContent
         editEmail.value = children[4].textContent
         editRoles.value = children[5].textContent
+        editPassword.value = ""
+
     }
 })
 

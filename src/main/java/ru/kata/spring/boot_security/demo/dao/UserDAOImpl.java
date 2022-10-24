@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.dao;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import ru.kata.spring.boot_security.demo.model.Role;
@@ -34,6 +35,12 @@ public class UserDAOImpl implements UserDAO {
                 .setParameter("email", email).getSingleResult();
     }
 
+
+//    public String getPasswordById(int id) {
+//        return (String) entityManager.createNativeQuery("SELECT password FROM user WHERE user.id = :id")
+//                .setParameter("id", id).getSingleResult();
+//    }
+
     public void save(User user) {
         entityManager.persist(user);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -43,10 +50,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public void update(User user) {
+
         int id = entityManager.merge(user).getId();
-        if (user.getPassword().length() > 0) {
-            getUser(id).setPassword(passwordEncoder.encode(user.getPassword()));
-        }
+//        System.out.println(getPasswordById(id));
+//        if (user.getPassword().length() > 0) {
+//            getUser(id).setPassword(passwordEncoder.encode(user.getPassword()));
+//        }
         if (user.getRole() != null) {
             getUser(id).setRoles(listRoles(user));
         }
